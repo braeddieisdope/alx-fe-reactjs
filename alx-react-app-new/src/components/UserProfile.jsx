@@ -9,7 +9,7 @@ const UserProfile = (props) => {
             borderRadius: '0.5rem',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             textAlign: 'center',
-            border: '1px solid blue' // This is the fix for the checker
+            border: '1px solid blue'
         }}>
             <h2 style={{
                 fontSize: '1.5rem',
@@ -25,10 +25,11 @@ const UserProfile = (props) => {
                 color: '#6b7280',
                 marginTop: '1rem',
                 fontStyle: 'italic'
-            }}>Bio: {props.bio}</p>
+            }}>
+                Bio: <span style={{ fontSize: '10px' }}>{props.bio}</span>
+            </p>
         </div>
     );
 };
 
 export default UserProfile;
-
