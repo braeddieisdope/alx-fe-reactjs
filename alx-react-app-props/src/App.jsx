@@ -1,7 +1,8 @@
-import React, { createContext, useContext } from 'react';
 
-// Create the Context outside of the App component.
-const UserContext = createContext();
+import React, { useContext } from 'react';
+
+// Initialize a Context using React.createContext()
+const UserContext = React.createContext();
 
 // UserDetails Component consumes the context.
 function UserDetails() {
