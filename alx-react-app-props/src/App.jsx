@@ -1,37 +1,9 @@
-import React, { createContext, useContext } from 'react';
 
-// Create the Context outside of the App component.
-const UserContext = createContext();
+import React from 'react';
+import ProfilePage from './ProfilePage';
+import { UserContext } from './UserContext';
+import './index.css';
 
-// UserDetails Component consumes the context.
-function UserDetails() {
-  const userData = useContext(UserContext);
-  return (
-    <div className="bg-white p-6 rounded-xl shadow-lg mt-8 w-full">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4">User Details (from Context)</h3>
-      <div className="space-y-2 text-gray-600">
-        <p><strong>Name:</strong> {userData.name}</p>
-        <p><strong>Email:</strong> {userData.email}</p>
-      </div>
-    </div>
-  );
-}
-
-// UserInfo Component is now a simple wrapper.
-function UserInfo() {
-  return (
-    <UserDetails />
-  );
-}
-
-// ProfilePage Component is a simple wrapper.
-function ProfilePage() {
-  return (
-    <UserInfo />
-  );
-}
-
-// Main App Component provides the context.
 function App() {
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
