@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useRecipeStore } from './recipeStore';
 import EditRecipeForm from './EditRecipeForm';
 import DeleteRecipeButton from './DeleteRecipeButton';
+import FavoriteButton from './FavoriteButton'; // Import the new component
 
 const RecipeDetails = () => {
   const { recipeId } = useParams();
@@ -24,7 +25,7 @@ const RecipeDetails = () => {
   const handleSave = () => {
     setIsEditing(false);
   };
-
+  
   const handleDeleteSuccess = () => {
     navigate('/');
   };
@@ -39,6 +40,7 @@ const RecipeDetails = () => {
           <p>{recipe.description}</p>
           <button onClick={handleEdit}>Edit</button>
           <DeleteRecipeButton recipeId={recipe.id} onDelete={handleDeleteSuccess} />
+          <FavoriteButton recipeId={recipe.id} />
         </>
       )}
     </div>
