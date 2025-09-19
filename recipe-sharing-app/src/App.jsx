@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      {/* [Router] */}
       <nav>
         <Link to="/">Home</Link>
       </nav>
