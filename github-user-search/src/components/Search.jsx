@@ -12,7 +12,10 @@ const Search = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username) return;
+    if (!username) {
+      setError('Please enter a username.');
+      return;
+    }
 
     setLoading(true);
     setError(null);
@@ -23,7 +26,7 @@ const Search = () => {
     if (result.success) {
       setUser(result.data);
     } else {
-      setError(result.error);
+      setError('Looks like we can\'t find the user.');
     }
 
     setLoading(false);
@@ -41,7 +44,29 @@ const Search = () => {
         <button type="submit">Search</button>
       </form>
 
-      {/* This is where we will display the results, loading, or error messages in the next step */}
+      {loading && <p>Loading...</p>}
+
+      {error && <p className="error-message">{error}</p>}
+
+      {user && (
+        <div className="user-profile">
+          <img
+            src={user.avatar_url}
+            alt={`${user.login}'s avatar`}
+            className="avatar"
+          />
+          <h2>{user.name || user.login}</h2>
+          <a
+            href={user.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Profile on GitHub
+          </a>
+          <p>Followers: {user.followers}</p>
+          <p>Public Repos: {user.public_repos}</p>
+        </div>
+      )}
     </div>
   );
 };
